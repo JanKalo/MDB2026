@@ -1,0 +1,46 @@
+id,host_id,host_name,neighbourhood,neighbourhood_cleansed,room_type,property_type,accommodates,bedrooms,bathrooms,beds,price,minimum_nights,maximum_nights,availability_365,number_of_reviews,review_scores_rating,instant_bookable,host_since,latitude,longitude,license
+496953,2453971,Kim,,De Baarsjes - Oud-West,Private room,Private room in bed and breakfast,2,1.0,1.5,1.0,$250.00,1,31,65,28,4.86,f,2012-05-24,52.36385,4.87483,0363 A70C E031 9597 F8A8
+851044,4443833,Nova Team,"Amsterdam, North Holland, Netherlands",Zuid,Entire home/apt,Entire rental unit,4,2.0,1.5,2.0,$156.00,1,30,156,1105,4.75,t,2012-12-19,52.34025,4.8466,0363 B559 3E8F 0F72 1573
+4381773,22750552,Karlijn,"Amsterdam, North Holland, Netherlands",Zuid,Entire home/apt,Entire rental unit,4,1.0,,,,2,1125,0,73,4.88,f,2014-10-20,52.35375,4.84745,0363 5411 0D7E D316 23E5
+8930278,6488934,Nadia,,De Pijp - Rivierenbuurt,Entire home/apt,Entire rental unit,2,1.0,,,,3,1125,0,27,4.93,f,2013-05-20,52.35065,4.8878,0363 644C 888B 42B1 3FBF
+14299321,6027515,Ludo,"Amsterdam, NH, Netherlands",De Baarsjes - Oud-West,Entire home/apt,Entire home,2,1.0,1.0,1.0,$170.00,2,15,0,15,4.67,f,2013-04-21,52.36215,4.85533,0363 4748 7856 E03E 393F
+15038140,2809810,Maarten,"Amsterdam, Noord-Holland, Netherlands",Centrum-West,Entire home/apt,Houseboat,4,2.0,1.0,3.0,$599.00,3,1125,205,75,5.0,f,2012-07-02,52.37994,4.88759,0363 C4E7 80F1 5E1D 2AD5
+15258535,594303102,Bogdan,"Amsterdam, Noord Holland, Netherlands",De Pijp - Rivierenbuurt,Private room,Private room in rental unit,2,1.0,1.0,1.0,$140.00,1,365,204,560,4.89,t,2024-08-05,52.35068,4.89284,0363 28FF F4CA 3B10 73E9
+16270813,62678360,Menke,,De Pijp - Rivierenbuurt,Entire home/apt,Entire rental unit,4,1.0,1.0,1.0,$254.00,4,1125,302,53,4.81,f,2016-03-12,52.35378,4.88702,0363 8B00 956D 5A39 D3F7
+18997009,594303102,Bogdan,"Amsterdam, Noord Holland, Netherlands",De Pijp - Rivierenbuurt,Private room,Private room in rental unit,2,1.0,1.0,1.0,$121.00,1,700,222,467,4.92,t,2024-08-05,52.35068,4.89284,0363 28FF F4CA 3B10 73E9
+21324372,151759692,Chafia,"Amsterdam, Noord-Holland, Netherlands",De Baarsjes - Oud-West,Private room,Private room in rental unit,1,1.0,1.0,1.0,$183.00,1,360,365,108,4.47,f,2017-09-23,52.36337,4.85637,0363 1F39 43F9 9D81 D773
+23971504,180288270,Ellen,"Amsterdam, Noord-Holland, Netherlands",Zuid,Entire home/apt,Entire guest suite,2,0.0,1.5,1.0,$157.00,2,1125,239,455,4.9,f,2018-03-24,52.35254,4.88516,0363 93D0 7CE8 973E 45C0
+24428291,151759692,Chafia,"Amsterdam, Noord-Holland, Netherlands",De Baarsjes - Oud-West,Private room,Private room in rental unit,1,1.0,1.0,1.0,$179.00,1,360,365,112,4.61,f,2017-09-23,52.36434,4.85665,0363 1F39 43F9 9D81 D773
+24855185,3984496,Jihan,"Amsterdam, NH, Netherlands",Noord-West,Entire home/apt,Entire home,2,1.0,,,,2,30,0,12,5.0,f,2012-10-26,52.41456,4.88751,0363 5318 D0C0 C5F4 DA09
+44695126,222345159,Marco,,Centrum-West,Private room,Private room in rental unit,2,0.0,1.0,0.0,$121.00,2,1125,325,87,4.7,t,2018-10-24,52.37783,4.89633,0363 A92C 7C23 2E55 4BBF
+44733441,222345159,Marco,,Centrum-West,Private room,Private room in rental unit,2,0.0,1.0,,$121.00,2,1125,4,11,4.09,t,2018-10-24,52.37792,4.89669,0363 A92C 7C23 2E55 4BBF
+50076767,59203614,Marie Claire,,De Baarsjes - Oud-West,Entire home/apt,Entire condo,2,1.0,,,,3,30,0,13,4.85,f,2016-02-17,52.36922,4.87439,0363 E815 C35A 6495 BE1F
+51687534,6894429,Kim,,De Baarsjes - Oud-West,Entire home/apt,Entire condo,2,1.0,1.5,1.0,$177.00,1,7,257,13,4.92,f,2013-06-13,52.36102,4.84952,0363 50BF 9D7C 5AE7 1D71
+601930930626309766,441046124,Lina,,Zuid,Private room,Private room in condo,2,1.0,1.5,1.0,$144.00,5,1125,173,3,4.33,f,2022-01-18,52.35594,4.85392,0363126196415EB9BEF8
+625172379696494417,6078235,Özge,,De Baarsjes - Oud-West,Entire home/apt,Entire rental unit,2,1.0,1.0,1.0,$250.00,1,1125,179,17,5.0,f,2013-04-24,52.368996,4.853292,0363 341D 21C4 00C8 FC53
+649835461610968145,227614626,Bonnie,"Amsterdam, Noord-Holland, Netherlands",Noord-West,Entire home/apt,Entire home,4,3.0,,,,3,365,0,5,5.0,f,2018-11-26,52.41541,4.8987,0363 C4F5 7772 3B45 3919
+656264564452336100,465843289,Riccardo,"Amsterdam, Noord-Holland, Netherlands",De Pijp - Rivierenbuurt,Entire home/apt,Entire condo,2,2.0,1.0,1.0,$239.00,2,30,1,11,4.91,t,2022-06-24,52.35077,4.88853,0363A47BC6A37A9033E6
+664953553932644087,66817978,Karen,"Amsterdam, Noord-Holland, Netherlands",Centrum-West,Entire home/apt,Entire rental unit,4,2.0,1.5,2.0,$432.00,3,365,271,72,4.99,f,2016-04-11,52.3772028,4.8799391,0363 C8CF B85B 2FF3 4940
+803430163743436228,495838645,Giuseppe,"Amsterdam, Noord-Holland, Netherlands",Centrum-West,Entire home/apt,Entire rental unit,6,2.0,1.5,6.0,$506.00,1,1125,294,74,4.96,t,2023-01-13,52.37398682855862,4.900400544984344,Exempt
+838483163404494394,503540785,Florian,,De Pijp - Rivierenbuurt,Entire home/apt,Entire rental unit,2,1.0,1.0,1.0,$270.00,2,10,176,8,4.63,f,2023-03-02,52.3548111,4.9017614,0363 19FE 0225 90ED 70BC
+900573495250222781,21402888,Mickey,"Amsterdam, Noord-Holland, Netherlands",Noord-West,Entire home/apt,Entire home,4,2.0,,,,3,19,0,5,5.0,f,2014-09-16,52.412234331271954,4.900148540887338,0363 1EFD 5404 566D AF53
+900622683786572507,6078235,Özge,,De Baarsjes - Oud-West,Entire home/apt,Entire condo,2,1.0,1.0,1.0,$200.00,1,365,45,8,5.0,f,2013-04-24,52.37082508216645,4.85383180455644,0363BD1FFF922CB3C083
+919569688042387357,93904464,Dionne,,De Baarsjes - Oud-West,Entire home/apt,Entire serviced apartment,2,1.0,,,,12,14,14,5,5.0,f,2016-09-06,52.3633943,4.8559434,0363 E2BC 77A0 426A CF03
+944559043890208372,10818252,Filippo,"Amsterdam, Noord-Holland, Netherlands",Zuid,Private room,Private room in rental unit,2,1.0,1.5,1.0,$123.00,2,35,327,61,4.87,t,2013-12-26,52.34956888140631,4.846493514526356,0363 8595 FEA0 E6B2 4CFD
+954352726228663172,654760,Alex,,Centrum-West,Entire home/apt,Entire rental unit,2,1.0,1.5,1.0,$375.00,5,30,32,6,5.0,f,2011-06-02,52.3725003,4.8817697,0363 9F87 89CD 0323 48EF
+973123813373567899,189887097,Anne Rose,,Centrum-West,Entire home/apt,Houseboat,2,1.0,1.5,1.0,$320.00,2,365,183,10,4.9,t,2018-05-16,52.3790746,4.8869935,0363 13CC E376 16BB 9868
+978234422189520298,10008625,Hanneke,"Amsterdam, Noord-Holland, Netherlands",Noord-West,Entire home/apt,Entire rental unit,2,1.0,,,,1,365,0,12,5.0,f,2013-11-14,52.41178,4.91613,0363 E083 EF51 B02F B3A3
+1041897135829920124,493320964,Julia,,Zuid,Entire home/apt,Entire rental unit,3,1.0,1.5,1.0,$169.00,10,365,358,1,5.0,f,2022-12-29,52.35296,4.84682,0363 3876 2FD3 46E9 766F
+1089574153630681803,555225937,Irona,,Centrum-West,Entire home/apt,Entire rental unit,4,2.0,1.0,2.0,$449.00,1,365,254,13,4.77,f,2024-01-08,52.37108197450614,4.895542654060124,0363 6420 F565 FD6E 5C55
+1132335542369692284,551668595,Olympic Hotel,,Zuid,Private room,Room in hotel,4,1.0,1.0,4.0,$170.00,1,365,83,207,4.83,t,2023-12-19,52.341095,4.852726,Exempt
+1202766888719461170,578822209,Barbara,,Centrum-West,Entire home/apt,Entire home,4,2.0,1.5,2.0,$437.00,5,30,319,13,4.92,f,2024-05-21,52.37761960833846,4.881429385997618,1353 26D0 1D1B 1965 90D5
+1206450192810422399,39110511,Mike,,Noord-West,Entire home/apt,Entire home,5,2.0,1.0,2.0,$260.00,1,1125,101,0,,f,2015-07-21,52.40842802292239,4.898348386260003,0363 20A8 9076 EEE1 F830
+1270218804695534598,191375412,Danique,,Zuid,Entire home/apt,Entire rental unit,2,1.0,1.0,1.0,$147.00,21,30,242,0,,f,2018-05-24,52.34494,4.86546,0363 0395 7896 34E7 9E07
+1283270137776519883,14242778,Katelijne,,Noord-West,Entire home/apt,Entire home,5,3.0,,,,28,365,0,0,,f,2014-04-13,52.41722995734273,4.907079962011687,0363 FB3D C9C8 2CA7 BA2B
+1296307024127704565,2068431,Iris,,Noord-West,Entire home/apt,Entire home,4,2.0,,,,6,30,0,1,5.0,f,2012-04-04,52.41840740206365,4.894455620649032,0363 0A4D 8E7D 364B 1681
+1299914859044291837,39110511,Mike,,Noord-West,Entire home/apt,Entire home,4,2.0,1.5,2.0,$225.00,1,1125,90,0,,f,2015-07-21,52.40541,4.89904,0363 45B9 9EC7 598E 0450
+1325267216974796158,198405490,Suzanne,"Amsterdam, Noord-Holland, Netherlands",De Pijp - Rivierenbuurt,Entire home/apt,Entire rental unit,4,2.0,2.0,2.0,$235.00,28,179,164,0,,f,2018-06-27,52.35484,4.88908,0363 410E 973B 7C0A E35B
+1336353466633867528,152088137,Fleur,,De Pijp - Rivierenbuurt,Entire home/apt,Entire rental unit,2,1.0,1.0,1.0,$250.00,1,365,350,4,5.0,f,2017-09-25,52.34978,4.88747,0363 EE73 A9B9 DFA2 FAE4
+1363751696329411827,39110511,Mike,,Noord-West,Entire home/apt,Entire home,4,2.0,1.5,2.0,$319.00,1,1125,120,1,5.0,f,2015-07-21,52.40841146759024,4.898658731602602,0363 A78F E559 65C1 4BB9
+1378117646137329011,684562202,Ties Maarten,,De Pijp - Rivierenbuurt,Entire home/apt,Entire rental unit,2,1.0,1.0,1.0,$225.00,1,30,100,0,,f,2025-03-16,52.34289,4.90437,
+1381948731851437962,22032032,Charlotte,,Zuid,Entire home/apt,Entire rental unit,2,1.0,1.0,1.0,$170.00,2,30,238,3,5.0,f,2014-10-02,52.35477,4.88666,0363 5832 8FBB B5F2 18E3
