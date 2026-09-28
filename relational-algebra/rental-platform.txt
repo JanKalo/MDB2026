@@ -1,0 +1,79 @@
+group: MDB 2026 rental platform (practice)
+description[[Fictional practice data for the relational algebra exercises of Modern Databases 2026, University of Amsterdam. Schema from Lecture 6: Host, Listing, Guest, Booking. Exercises: https://github.com/JanKalo/MDB2026/tree/main/relational-algebra ]]
+
+Host = {
+hid:string, hname:string
+'H1', 'Ada'
+'H2', 'Bram'
+'H3', 'Cleo'
+'H4', 'Dirk'
+'H5', 'Eva'
+'H6', 'Floor'
+}
+
+Listing = {
+lid:string, hid:string, city:string, price:number
+'L1', 'H1', 'AMS', 95
+'L2', 'H1', 'AMS', 140
+'L3', 'H1', 'RTM', 85
+'L4', 'H2', 'RTM', 70
+'L5', 'H2', 'UTR', 90
+'L6', 'H3', 'AMS', 85
+'L7', 'H3', 'AMS', 210
+'L8', 'H4', 'UTR', 75
+'L9', 'H4', 'AMS', 85
+'L10', 'H4', 'RTM', 95
+'L11', 'H5', 'AMS', 130
+'L12', 'H5', 'AMS', 180
+'L13', 'H3', 'UTR', 100
+'L14', 'H3', 'RTM', 120
+}
+
+Guest = {
+gid:string, gname:string
+'G1', 'Noor'
+'G2', 'Luca'
+'G3', 'Emma'
+'G4', 'Sam'
+'G5', 'Daan'
+'G6', 'Yara'
+'G7', 'Sam'
+'G8', 'Mehmet'
+'G9', 'Fleur'
+'G10', 'Lotte'
+'G11', 'Noor'
+'G12', 'Tim'
+}
+
+Booking = {
+bid:string, lid:string, gid:string
+'B1', 'L1', 'G1'
+'B2', 'L3', 'G1'
+'B3', 'L1', 'G2'
+'B4', 'L2', 'G2'
+'B5', 'L3', 'G2'
+'B6', 'L1', 'G5'
+'B7', 'L2', 'G5'
+'B8', 'L3', 'G5'
+'B9', 'L2', 'G4'
+'B10', 'L2', 'G4'
+'B11', 'L4', 'G3'
+'B12', 'L6', 'G3'
+'B13', 'L5', 'G6'
+'B14', 'L8', 'G6'
+'B15', 'L9', 'G7'
+'B16', 'L10', 'G7'
+'B17', 'L13', 'G8'
+'B18', 'L14', 'G8'
+'B19', 'L8', 'G12'
+'B20', 'L8', 'G12'
+'B21', 'L6', 'G9'
+'B22', 'L4', 'G9'
+'B23', 'L10', 'G1'
+'B24', 'L5', 'G2'
+'B25', 'L9', 'G6'
+'B26', 'L14', 'G3'
+'B27', 'L9', 'G8'
+'B28', 'L10', 'G6'
+'B29', 'L8', 'G9'
+}
