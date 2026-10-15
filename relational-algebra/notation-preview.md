@@ -1,75 +1,73 @@
 # Temporary rendering test (not for students)
 
-## A. Display math, exercise 9
-
-```math
-\begin{array}{l}
-\mathrm{LB} = \rho_{\mathrm{LB}}(\mathrm{Listing} \bowtie \mathrm{Booking})\\
-J = \mathrm{Host} \mathrel{⟕}_{\mathrm{Host.hid} = \mathrm{LB.hid}} \mathrm{LB}\\
-\rho_{\mathrm{HostCounts}(\mathrm{hid},\,\mathrm{hname},\,n)}({}_{\mathrm{Host.hid},\,\mathrm{hname}}\mathfrak{F}_{\mathrm{count}(\mathrm{bid})}(J))
-\end{array}
-```
-
-## B. Inline math lines, exercise 9
-
-$`\mathrm{LB} = \rho_{\mathrm{LB}}(\mathrm{Listing} \bowtie \mathrm{Booking})`$\
-$`J = \mathrm{Host} \mathrel{⟕}_{\mathrm{Host.hid} = \mathrm{LB.hid}} \mathrm{LB}`$\
-$`\rho_{\mathrm{HostCounts}(\mathrm{hid},\,\mathrm{hname},\,n)}({}_{\mathrm{Host.hid},\,\mathrm{hname}}\mathfrak{F}_{\mathrm{count}(\mathrm{bid})}(J))`$
-
-## C. Quotes and underscores, exercises 2 and 8
-
-1. text: $`\sigma_{\mathrm{city} = \text{'UTR'} \,\wedge\, \mathrm{price} < 100}(\mathrm{Listing})`$
-2. texttt: $`\sigma_{\mathrm{city} = \texttt{'UTR'}}(\mathrm{Listing})`$
-3. mathrm: $`\sigma_{\mathrm{city} = \mathrm{'UTR'}}(\mathrm{Listing})`$
-4. verb: $`\sigma_{\mathrm{city} = \verb|'UTR'|}(\mathrm{Listing})`$
-5. underscore: $`\pi_{\mathrm{Listing.city},\,\mathrm{lid},\,\mathrm{price}}(\mathrm{Listing} \bowtie_{\mathrm{Listing.city} = M.\mathrm{city} \,\wedge\, \mathrm{Listing.price} = M.\mathrm{min\_price}} M)`$
-
-## D. Left outer join
-
-1. mathrel: $`R \mathrel{⟕}_{p} S`$
-2. plain: $`R ⟕_{p} S`$
-3. unicode: $`R \mathrel{\unicode{x27D5}}_{p} S`$
-4. bowtie for comparison: $`R \bowtie_{p} S`$
-
-## E. Table
-
-| Lecture | RelaX |
-|---|---|
-| $`\sigma_{p}(R)`$ | σ p (R) |
-| $`{}_{a}\mathfrak{F}_{\mathrm{count}(b)}(R)`$ | γ a; count(b)→n (R) |
-| $`R \mathrel{⟕}_{p} S`$ | R ⟕ p S |
-
-## F. Long formula, exercise 4 with theta joins
-
-```math
-\pi_{\mathrm{Guest.gid},\,\mathrm{gname}}(\mathrm{Guest} \bowtie_{\mathrm{Guest.gid} = \mathrm{Booking.gid}} (\mathrm{Booking} \bowtie_{\mathrm{Booking.lid} = \mathrm{Listing.lid}} (\mathrm{Listing} \bowtie_{\mathrm{Listing.hid} = \mathrm{Host.hid}} \sigma_{\mathrm{hname} = \text{'Ada'}}(\mathrm{Host}))))
-```
-
-$`\pi_{\mathrm{Guest.gid},\,\mathrm{gname}}(\mathrm{Guest} \bowtie_{\mathrm{Guest.gid} = \mathrm{Booking.gid}} (\mathrm{Booking} \bowtie_{\mathrm{Booking.lid} = \mathrm{Listing.lid}} (\mathrm{Listing} \bowtie_{\mathrm{Listing.hid} = \mathrm{Host.hid}} \sigma_{\mathrm{hname} = \text{'Ada'}}(\mathrm{Host}))))`$
-
-## G. Grouping symbol
-
-$`\mathfrak{F}`$ (fraktur, as on the slides), $`\mathcal{F}`$, $`\mathscr{F}`$, and in a sentence: grouping with $`\mathfrak{F}`$ works inline.
-
-<details><summary>H. Inside a details block</summary>
+<details open><summary>1. Display math with $$ on separate lines, inside details</summary>
 
 Lecture notation:
 
-```math
+$$
 \begin{array}{l}
-N = \pi_{\mathrm{hid}}(\mathrm{Listing}) \setminus \pi_{\mathrm{hid}}(\mathrm{Listing} \bowtie \mathrm{Booking})\\
-\pi_{\mathrm{hid},\,\mathrm{hname}}(\mathrm{Host} \bowtie N)
+\mathrm{LB} = \rho_{\mathrm{LB}}(\mathrm{Listing} \bowtie \mathrm{Booking})\\
+J = \mathrm{Host} \mathrel{⟕}_{\mathrm{Host.hid} = \mathrm{LB.hid}} \mathrm{LB}\\
+\rho_{\mathrm{HostCounts}(\mathrm{hid},\,\mathrm{hname},\,n)}({}_{\mathrm{Host.hid},\,\mathrm{hname}}𝔉_{\mathrm{count}(\mathrm{bid})}(J))
 \end{array}
+$$
+
+RelaX:
+
+```
+LB = ρ LB (Listing ⋈ Booking)
 ```
 
-$`N = \pi_{\mathrm{hid}}(\mathrm{Listing}) \setminus \pi_{\mathrm{hid}}(\mathrm{Listing} \bowtie \mathrm{Booking})`$\
-$`\pi_{\mathrm{hid},\,\mathrm{hname}}(\mathrm{Host} \bowtie N)`$
+</details>
+
+<details open><summary>2. Display math with $$ on one line, inside details</summary>
+
+Lecture notation:
+
+$$\begin{array}{l} N = \pi_{\mathrm{hid}}(\mathrm{Listing}) \setminus \pi_{\mathrm{hid}}(\mathrm{Listing} \bowtie \mathrm{Booking})\\ \pi_{\mathrm{hid},\,\mathrm{hname}}(\mathrm{Host} \bowtie N) \end{array}$$
 
 RelaX:
 
 ```
 N = π hid (Listing) - π hid (Listing ⋈ Booking)
-π hid, hname (Host ⋈ N)
 ```
 
 </details>
+
+<details open><summary>3. Inline lines, inside details, with Unicode Fraktur and quotes</summary>
+
+Lecture notation:
+
+$`M = \rho_{M(\mathrm{city},\,\mathrm{min\_price})}({}_{\mathrm{city}}𝔉_{\mathrm{min}(\mathrm{price})}(\mathrm{Listing}))`$\
+$`\pi_{\mathrm{Listing.city},\,\mathrm{lid},\,\mathrm{price}}(\mathrm{Listing} \bowtie_{\mathrm{Listing.city} = M.\mathrm{city} \,\wedge\, \mathrm{Listing.price} = M.\mathrm{min\_price}} M)`$
+
+$`\pi_{\mathrm{hid},\,\mathrm{hname}}(\mathrm{Host} \bowtie \sigma_{\mathrm{city} = \text{'UTR'} \,\wedge\, \mathrm{price} < 100}(\mathrm{Listing}))`$
+
+Grouping symbol: Unicode $`𝔉`$ against mathfrak $`\mathfrak{F}`$.
+
+</details>
+
+<details open><summary>4. Long formula with a break, display inside details</summary>
+
+$$
+\begin{array}{l}
+\pi_{\mathrm{Guest.gid},\,\mathrm{gname}}(\mathrm{Guest} \bowtie_{\mathrm{Guest.gid} = \mathrm{Booking.gid}} (\mathrm{Booking} \bowtie_{\mathrm{Booking.lid} = \mathrm{Listing.lid}}\\
+\qquad (\mathrm{Listing} \bowtie_{\mathrm{Listing.hid} = \mathrm{Host.hid}} \sigma_{\mathrm{hname} = \text{'Ada'}}(\mathrm{Host}))))
+\end{array}
+$$
+
+</details>
+
+<details open><summary>5. Long formula without a break, inline inside details</summary>
+
+$`\pi_{\mathrm{Guest.gid},\,\mathrm{gname}}(\mathrm{Guest} \bowtie_{\mathrm{Guest.gid} = \mathrm{Booking.gid}} (\mathrm{Booking} \bowtie_{\mathrm{Booking.lid} = \mathrm{Listing.lid}} (\mathrm{Listing} \bowtie_{\mathrm{Listing.hid} = \mathrm{Host.hid}} \sigma_{\mathrm{hname} = \text{'Ada'}}(\mathrm{Host}))))`$
+
+</details>
+
+6. Table cell and running text: grouping with $`𝔉`$ in a sentence.
+
+| Lecture | RelaX |
+|---|---|
+| $`{}_{a}𝔉_{\mathrm{count}(b)}(R)`$ | γ a; count(b)→n (R) |
+| $`𝔉_{\mathrm{max}(p)}(R)`$ | γ max(p)→m (R) |
+| $`\rho_{(x,\,y)}(R)`$, where R has columns a, b | ρ x←a, y←b (R) |
