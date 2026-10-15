@@ -43,4 +43,4 @@ SELECT COUNT(*) FROM 'https://raw.githubusercontent.com/JanKalo/MDB2026/main/dat
 
 ## Relational algebra practice
 
-`relational-algebra/` holds seventeen exercises on the rental platform from Lecture 6 (Host, Listing, Guest, Booking), in the style of the exam questions, with the expected result of each and no model solution. Write the answers on paper and check them in [RelaX](https://dbis-uibk.github.io/relax/calc); `rental-platform.txt` is the data to paste into RelaX. Instructions are in [relational-algebra/README.md](relational-algebra/README.md).
+`relational-algebra/` holds seventeen exercises on the rental platform from Lecture 6 (Host, Listing, Guest, Booking), in the style of the exam questions, with the expected result and a solution for each, in the lecture notation and in RelaX. Write the answers on paper and check them in [RelaX](https://dbis-uibk.github.io/relax/calc); `rental-platform.txt` is the data to paste into RelaX. Instructions are in [relational-algebra/README.md](relational-algebra/README.md).
