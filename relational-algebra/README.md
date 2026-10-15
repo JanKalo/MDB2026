@@ -157,7 +157,7 @@ What is the highest price per night of any listing? Return one column, max_price
 
 Lecture notation:
 
-$`\rho_{M ( \text{max_price} )} ( 𝔉_{\text{max} ( \text{price} )} ( \text{Listing} ) )`$
+$`\rho_{M ( \text{max\_price} )} ( 𝔉_{\text{max} ( \text{price} )} ( \text{Listing} ) )`$
 
 RelaX:
 
@@ -184,7 +184,7 @@ Which hosts have a listing in Utrecht that costs less than €100 per night? Ret
 
 Lecture notation:
 
-$`\pi_{\text{hid} ,\, \text{hname}} ( \text{Host} \bowtie \sigma_{\text{city} = \text{'UTR'} \,\wedge\, \text{price} < 100} ( \text{Listing} ) )`$
+$`\pi_{\text{hid} ,\, \text{hname}} ( \text{Host} \bowtie \sigma_{\text{city} = \verb|'UTR'| \,\wedge\, \text{price} < 100} ( \text{Listing} ) )`$
 
 RelaX:
 
@@ -242,7 +242,7 @@ Which guests booked at least one listing hosted by Ada? Return (gid, gname).
 
 Lecture notation:
 
-$`\pi_{\text{gid} ,\, \text{gname}} ( \text{Guest} \bowtie \text{Booking} \bowtie \text{Listing} \bowtie \sigma_{\text{hname} = \text{'Ada'}} ( \text{Host} ) )`$
+$`\pi_{\text{gid} ,\, \text{gname}} ( \text{Guest} \bowtie \text{Booking} \bowtie \text{Listing} \bowtie \sigma_{\text{hname} = \verb|'Ada'|} ( \text{Host} ) )`$
 
 RelaX:
 
@@ -255,7 +255,7 @@ The same with theta joins:
 Lecture notation:
 
 $`\pi_{\text{Guest.gid} ,\, \text{gname}} ( \text{Guest} \bowtie_{\text{Guest.gid} = \text{Booking.gid}} ( \text{Booking} \bowtie_{\text{Booking.lid} = \text{Listing.lid}}`$\
-$`\qquad ( \text{Listing} \bowtie_{\text{Listing.hid} = \text{Host.hid}} \sigma_{\text{hname} = \text{'Ada'}} ( \text{Host} ) ) ) )`$
+$`\qquad ( \text{Listing} \bowtie_{\text{Listing.hid} = \text{Host.hid}} \sigma_{\text{hname} = \verb|'Ada'|} ( \text{Host} ) ) ) )`$
 
 RelaX:
 
@@ -349,8 +349,8 @@ Which guests booked a listing in Amsterdam and also a listing in Utrecht? Return
 
 Lecture notation:
 
-$`A = \pi_{\text{gid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \text{'AMS'}} ( \text{Listing} ) )`$\
-$`U = \pi_{\text{gid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \text{'UTR'}} ( \text{Listing} ) )`$\
+$`A = \pi_{\text{gid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \verb|'AMS'|} ( \text{Listing} ) )`$\
+$`U = \pi_{\text{gid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \verb|'UTR'|} ( \text{Listing} ) )`$\
 $`\pi_{\text{gid} ,\, \text{gname}} ( \text{Guest} \bowtie ( A \cap U ) )`$
 
 RelaX:
@@ -382,8 +382,8 @@ Which listing is the cheapest in its city? Return (city, lid, price) for every c
 
 Lecture notation:
 
-$`M = \rho_{M ( \text{city} ,\, \text{min_price} )} ( {}_{\text{city}} 𝔉_{\text{min} ( \text{price} )} ( \text{Listing} ) )`$\
-$`\pi_{\text{Listing.city} ,\, \text{lid} ,\, \text{price}} ( \text{Listing} \bowtie_{\text{Listing.city} = M\text{.city} \,\wedge\, \text{Listing.price} = M\text{.min_price}} M )`$
+$`M = \rho_{M ( \text{city} ,\, \text{min\_price} )} ( {}_{\text{city}} 𝔉_{\text{min} ( \text{price} )} ( \text{Listing} ) )`$\
+$`\pi_{\text{Listing.city} ,\, \text{lid} ,\, \text{price}} ( \text{Listing} \bowtie_{\text{Listing.city} = M\text{.city} \,\wedge\, \text{Listing.price} = M\text{.min\_price}} M )`$
 
 RelaX:
 
@@ -501,7 +501,7 @@ Which pairs of different guests booked the same listing in Rotterdam? Return eac
 
 Lecture notation:
 
-$`R = \pi_{\text{gid} ,\, \text{lid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \text{'RTM'}} ( \text{Listing} ) )`$\
+$`R = \pi_{\text{gid} ,\, \text{lid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \verb|'RTM'|} ( \text{Listing} ) )`$\
 $`\rho_{( \text{gid1} ,\, \text{gid2} )} ( \pi_{A\text{.gid} ,\, B\text{.gid}} ( \sigma_{A\text{.lid} = B\text{.lid} \,\wedge\, A\text{.gid} < B\text{.gid}} ( \rho_{A} ( R ) \times \rho_{B} ( R ) ) ) )`$
 
 RelaX:
@@ -559,7 +559,7 @@ Which guests booked every listing hosted by Ada? Return (gid, gname).
 
 Lecture notation:
 
-$`A = \pi_{\text{lid}} ( \text{Listing} \bowtie \sigma_{\text{hname} = \text{'Ada'}} ( \text{Host} ) )`$\
+$`A = \pi_{\text{lid}} ( \text{Listing} \bowtie \sigma_{\text{hname} = \verb|'Ada'|} ( \text{Host} ) )`$\
 $`G = \pi_{\text{gid}} ( \text{Booking} )`$\
 $`\text{Missing} = ( G \times A ) \setminus \pi_{\text{gid} ,\, \text{lid}} ( \text{Booking} )`$\
 $`\pi_{\text{gid} ,\, \text{gname}} ( \text{Guest} \bowtie ( G \setminus \pi_{\text{gid}} ( \text{Missing} ) ) )`$
@@ -614,7 +614,7 @@ M = ρ M (γ max(n)→m (C))
 
 Describe in one sentence what this expression returns, and give its result. Does the result contain every guest who never booked a listing in Amsterdam? If not, which guests are missing, and why?
 
-$`\pi_{\text{gid}} ( \text{Booking} ) \setminus \pi_{\text{gid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \text{'AMS'}} ( \text{Listing} ) )`$
+$`\pi_{\text{gid}} ( \text{Booking} ) \setminus \pi_{\text{gid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \verb|'AMS'|} ( \text{Listing} ) )`$
 
 <details><summary>Expected result (1 tuple)</summary>
 
