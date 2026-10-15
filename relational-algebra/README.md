@@ -6,6 +6,8 @@ Seventeen exercises on the rental platform from Lecture 6 (Host, Listing, Guest,
 
 Write each answer on paper first, in the notation from the lecture. Then run it in RelaX and compare the result with the expected result under the exercise. On the exam you write the lecture notation by hand; RelaX is only there to check your work. A matching result does not prove that an expression is correct for every database, but a different result always points to a mistake.
 
+Each exercise also has a solution in the lecture notation and in RelaX. Open it only after you have your own answer; other expressions can be correct as well. The RelaX version can be pasted into the editor unchanged.
+
 Every exercise can be solved with the operators from Lecture 6: σ, π, ρ, ×, joins, ∪, ∩, ∖, the left outer join and grouping with ℱ. None of them needs division. Relations are sets, so a result never contains the same tuple twice.
 
 ## Load the data in RelaX
@@ -153,6 +155,22 @@ What is the highest price per night of any listing? Return one column, max_price
 
 </details>
 
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+ρ[M(max_price)](ℱ[max(price)](Listing))
+```
+
+RelaX:
+
+```
+γ max(price)→max_price (Listing)
+```
+
+</details>
+
 ### Exercise 2. Cheap in Utrecht
 
 Which hosts have a listing in Utrecht that costs less than €100 per night? Return (hid, hname).
@@ -166,6 +184,22 @@ Which hosts have a listing in Utrecht that costs less than €100 per night? Ret
 
 </details>
 
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+π[hid, hname](Host ⋈ σ[city = 'UTR' ∧ price < 100](Listing))
+```
+
+RelaX:
+
+```
+π hid, hname (Host ⋈ σ city = 'UTR' ∧ price < 100 (Listing))
+```
+
+</details>
+
 ### Exercise 3. No booking at all
 
 Which guests have never made a booking? Return gid.
@@ -176,6 +210,22 @@ Which guests have never made a booking? Return gid.
 |---|
 | G10 |
 | G11 |
+
+</details>
+
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+π[gid](Guest) ∖ π[gid](Booking)
+```
+
+RelaX:
+
+```
+π gid (Guest) - π gid (Booking)
+```
 
 </details>
 
@@ -196,6 +246,36 @@ Which guests booked at least one listing hosted by Ada? Return (gid, gname).
 
 </details>
 
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+π[gid, gname](Guest ⋈ Booking ⋈ Listing ⋈ σ[hname = 'Ada'](Host))
+```
+
+RelaX:
+
+```
+π gid, gname (Guest ⋈ Booking ⋈ Listing ⋈ σ hname = 'Ada' (Host))
+```
+
+The same with theta joins:
+
+Lecture notation:
+
+```
+π[Guest.gid, gname](Guest ⋈[Guest.gid = Booking.gid] (Booking ⋈[Booking.lid = Listing.lid] (Listing ⋈[Listing.hid = Host.hid] σ[hname = 'Ada'](Host))))
+```
+
+RelaX:
+
+```
+π Guest.gid, gname (Guest ⋈ Guest.gid = Booking.gid (Booking ⋈ Booking.lid = Listing.lid (Listing ⋈ Listing.hid = Host.hid σ hname = 'Ada' (Host))))
+```
+
+</details>
+
 ### Exercise 5. Hosts without bookings
 
 Which hosts have at least one listing, but none of their listings has ever been booked? Return (hid, hname).
@@ -205,6 +285,24 @@ Which hosts have at least one listing, but none of their listings has ever been 
 | hid | hname |
 |---|---|
 | H5 | Eva |
+
+</details>
+
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+N = π[hid](Listing) ∖ π[hid](Listing ⋈ Booking)
+π[hid, hname](Host ⋈ N)
+```
+
+RelaX:
+
+```
+N = π hid (Listing) - π hid (Listing ⋈ Booking)
+π hid, hname (Host ⋈ N)
+```
 
 </details>
 
@@ -229,6 +327,24 @@ For every guest with at least one booking, how many bookings did they make? Retu
 
 </details>
 
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+C = ρ[C(gid, n)]([gid] ℱ [count(bid)](Booking))
+π[gid, gname, n](Guest ⋈ C)
+```
+
+RelaX:
+
+```
+C = ρ C (γ gid; count(bid)→n (Booking))
+π gid, gname, n (Guest ⋈ C)
+```
+
+</details>
+
 ### Exercise 7. Amsterdam and Utrecht
 
 Which guests booked a listing in Amsterdam and also a listing in Utrecht? Return (gid, gname).
@@ -244,6 +360,26 @@ Which guests booked a listing in Amsterdam and also a listing in Utrecht? Return
 
 </details>
 
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+A = π[gid](Booking ⋈ σ[city = 'AMS'](Listing))
+U = π[gid](Booking ⋈ σ[city = 'UTR'](Listing))
+π[gid, gname](Guest ⋈ (A ∩ U))
+```
+
+RelaX:
+
+```
+A = π gid (Booking ⋈ σ city = 'AMS' (Listing))
+U = π gid (Booking ⋈ σ city = 'UTR' (Listing))
+π gid, gname (Guest ⋈ (A ∩ U))
+```
+
+</details>
+
 ### Exercise 8. The cheapest listing in each city
 
 Which listing is the cheapest in its city? Return (city, lid, price) for every city. If two listings in a city share the lowest price, return both.
@@ -256,6 +392,24 @@ Which listing is the cheapest in its city? Return (city, lid, price) for every c
 | AMS | L9 | 85 |
 | RTM | L4 | 70 |
 | UTR | L8 | 75 |
+
+</details>
+
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+M = ρ[M(city, min_price)]([city] ℱ [min(price)](Listing))
+π[Listing.city, lid, price](Listing ⋈[Listing.city = M.city ∧ Listing.price = M.min_price] M)
+```
+
+RelaX:
+
+```
+M = ρ M (γ city; min(price)→min_price (Listing))
+π Listing.city, lid, price (Listing ⋈ Listing.city = M.city ∧ Listing.price = M.min_price M)
+```
 
 </details>
 
@@ -278,6 +432,42 @@ For every host, how many bookings were made for their listings? Hosts without an
 
 </details>
 
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+LB = ρ[LB](Listing ⋈ Booking)
+J = Host ⟕[Host.hid = LB.hid] LB
+ρ[HostCounts(hid, hname, n)]([Host.hid, hname] ℱ [count(bid)](J))
+```
+
+RelaX:
+
+```
+LB = ρ LB (Listing ⋈ Booking)
+J = Host ⟕ Host.hid = LB.hid LB
+ρ HostCounts (γ Host.hid, hname; count(bid)→n (J))
+```
+
+Also correct, with two left outer joins:
+
+Lecture notation:
+
+```
+J = (Host ⟕[Host.hid = Listing.hid] Listing) ⟕[Listing.lid = Booking.lid] Booking
+ρ[HostCounts(hid, hname, n)]([Host.hid, hname] ℱ [count(bid)](J))
+```
+
+RelaX:
+
+```
+J = (Host ⟕ Host.hid = Listing.hid Listing) ⟕ Listing.lid = Booking.lid Booking
+ρ HostCounts (γ Host.hid, hname; count(bid)→n (J))
+```
+
+</details>
+
 ### Exercise 10. Two different listings
 
 Which guests booked at least two different listings? Answer without grouping or counting. Return gid.
@@ -294,6 +484,22 @@ Which guests booked at least two different listings? Answer without grouping or 
 | G7 |
 | G8 |
 | G9 |
+
+</details>
+
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+π[B1.gid](σ[B1.gid = B2.gid ∧ B1.lid ≠ B2.lid](ρ[B1](Booking) × ρ[B2](Booking)))
+```
+
+RelaX:
+
+```
+π B1.gid (σ B1.gid = B2.gid ∧ B1.lid ≠ B2.lid (ρ B1 (Booking) ⨯ ρ B2 (Booking)))
+```
 
 </details>
 
@@ -316,6 +522,24 @@ Which pairs of different guests booked the same listing in Rotterdam? Return eac
 
 </details>
 
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+R = π[gid, lid](Booking ⋈ σ[city = 'RTM'](Listing))
+ρ[(gid1, gid2)](π[A.gid, B.gid](σ[A.lid = B.lid ∧ A.gid < B.gid](ρ[A](R) × ρ[B](R))))
+```
+
+RelaX:
+
+```
+R = π gid, lid (Booking ⋈ σ city = 'RTM' (Listing))
+ρ gid1←A.gid, gid2←B.gid (π A.gid, B.gid (σ A.lid = B.lid ∧ A.gid < B.gid (ρ A (R) ⨯ ρ B (R))))
+```
+
+</details>
+
 ### Exercise 12. Every listing booked
 
 In which cities has every listing been booked at least once? Return city.
@@ -326,6 +550,24 @@ In which cities has every listing been booked at least once? Return city.
 |---|
 | RTM |
 | UTR |
+
+</details>
+
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+U = π[lid](Listing) ∖ π[lid](Booking)
+π[city](Listing) ∖ π[city](Listing ⋈ U)
+```
+
+RelaX:
+
+```
+U = π lid (Listing) - π lid (Booking)
+π city (Listing) - π city (Listing ⋈ U)
+```
 
 </details>
 
@@ -342,6 +584,30 @@ Which guests booked every listing hosted by Ada? Return (gid, gname).
 
 </details>
 
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+A = π[lid](Listing ⋈ σ[hname = 'Ada'](Host))
+G = π[gid](Booking)
+Missing = (G × A) ∖ π[gid, lid](Booking)
+π[gid, gname](Guest ⋈ (G ∖ π[gid](Missing)))
+```
+
+RelaX:
+
+```
+A = π lid (Listing ⋈ σ hname = 'Ada' (Host))
+G = π gid (Booking)
+Missing = (G ⨯ A) - π gid, lid (Booking)
+π gid, gname (Guest ⋈ (G - π gid (Missing)))
+```
+
+G can also be π[gid](Guest): a guest without any booking misses all of Ada's listings, so the result is the same.
+
+</details>
+
 ### Exercise 14. The busiest host
 
 Which host has the most bookings over all of their listings? If several hosts share the highest number, return all of them. Return (hid, hname, n).
@@ -352,6 +618,26 @@ Which host has the most bookings over all of their listings? If several hosts sh
 |---|---|---|
 | H1 | Ada | 10 |
 | H4 | Dirk | 10 |
+
+</details>
+
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+C = ρ[C(hid, n)]([hid] ℱ [count(bid)](Listing ⋈ Booking))
+M = ρ[M(m)](ℱ[max(n)](C))
+π[hid, hname, n](Host ⋈ (C ⋈[n = m] M))
+```
+
+RelaX:
+
+```
+C = ρ C (γ hid; count(bid)→n (Listing ⋈ Booking))
+M = ρ M (γ max(n)→m (C))
+π hid, hname, n (Host ⋈ (C ⋈ n = m M))
+```
 
 </details>
 
@@ -370,6 +656,18 @@ Describe in one sentence what this expression returns, and give its result. Does
 | gid |
 |---|
 | G12 |
+
+</details>
+
+<details><summary>Solution</summary>
+
+The expression returns the gid of every guest who made at least one booking, but none in Amsterdam: G12. G10 and G11 are missing, although they never booked in Amsterdam either. They never made any booking, and the expression starts from π[gid](Booking), not from π[gid](Guest).
+
+RelaX:
+
+```
+π gid (Booking) - π gid (Booking ⋈ σ city = 'AMS' (Listing))
+```
 
 </details>
 
@@ -394,6 +692,24 @@ HAVING COUNT(b.bid) >= 10;
 
 </details>
 
+<details><summary>Solution</summary>
+
+Lecture notation:
+
+```
+σ[n ≥ 10](ρ[CityCounts(city, n)]([city] ℱ [count(bid)](Listing ⋈ Booking)))
+```
+
+RelaX:
+
+```
+σ n ≥ 10 (ρ CityCounts (γ city; count(bid)→n (Listing ⋈ Booking)))
+```
+
+HAVING becomes a selection above ℱ. A condition in WHERE would be a selection below it.
+
+</details>
+
 ### Exercise 17. Find the mistake
 
 A student answers the question "Which guests have never made a booking? Return their names." with the expression below. Which guest is missing from its result, and why? Write an expression that returns (gid, gname) of all guests without a booking.
@@ -410,6 +726,24 @@ The student's expression returns 1 tuple: (Lotte). The correct answer:
 |---|---|
 | G10 | Lotte |
 | G11 | Noor |
+
+</details>
+
+<details><summary>Solution</summary>
+
+G11 (Noor) is missing. The expression subtracts names, and G1, who has bookings, is also called Noor, so the name Noor is removed. Subtract the gid values instead, then join with Guest to get the names:
+
+Lecture notation:
+
+```
+π[gid, gname](Guest ⋈ (π[gid](Guest) ∖ π[gid](Booking)))
+```
+
+RelaX:
+
+```
+π gid, gname (Guest ⋈ (π gid (Guest) - π gid (Booking)))
+```
 
 </details>
 
