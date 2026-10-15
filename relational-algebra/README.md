@@ -8,7 +8,7 @@ Write each answer on paper first, in the notation from the lecture. Then run it 
 
 Each exercise also has a solution in the lecture notation and in RelaX. Open it only after you have your own answer; other expressions can be correct as well. The RelaX version can be pasted into the editor unchanged.
 
-Every exercise can be solved with the operators from Lecture 6: σ, π, ρ, ×, joins, ∪, ∩, ∖, the left outer join and grouping with ℱ. None of them needs division. Relations are sets, so a result never contains the same tuple twice.
+Every exercise can be solved with the operators from Lecture 6: σ, π, ρ, ×, joins, ∪, ∩, ∖, the left outer join and grouping with $`𝔉`$. None of them needs division. Relations are sets, so a result never contains the same tuple twice.
 
 ## Load the data in RelaX
 
@@ -32,23 +32,21 @@ The keys are hid, lid, gid and bid. city is AMS (Amsterdam), RTM (Rotterdam) or 
 
 ## Notation: lecture and RelaX
 
-Square brackets stand for the subscript you write by hand.
-
 | Lecture | RelaX | RelaX, typed on a keyboard |
 |---|---|---|
-| σ[p](R) | σ p (R) | sigma p (R) |
-| π[a, b](R) | π a, b (R) | pi a, b (R) |
-| ρ[S](R) | ρ S (R) | rho S (R) |
-| ρ[(x, y)](R), where R has columns a, b | ρ x←a, y←b (R) | rho x<-a, y<-b (R) |
-| ρ[S(x, y)](R) | ρ S (ρ x←a, y←b (R)) | rho S (rho x<-a, y<-b (R)) |
-| R × S | R ⨯ S | R cross join S |
-| R ⋈ S | R ⋈ S | R natural join S |
-| R ⋈[p] S | R ⋈ p S | R join p S |
-| R ⟕[p] S | R ⟕ p S | R left join p S |
-| R ∪ S, R ∩ S | R ∪ S, R ∩ S | R union S, R intersect S |
-| R ∖ S | R - S | R - S |
-| [a] ℱ [count(b)](R) | γ a; count(b)→n (R) | gamma a; count(b)->n (R) |
-| ℱ[max(p)](R) | γ max(p)→m (R) | gamma max(p)->m (R) |
+| $`\sigma_{p} ( R )`$ | σ p (R) | sigma p (R) |
+| $`\pi_{a ,\, b} ( R )`$ | π a, b (R) | pi a, b (R) |
+| $`\rho_{S} ( R )`$ | ρ S (R) | rho S (R) |
+| $`\rho_{( x ,\, y )} ( R )`$, where R has columns a, b | ρ x←a, y←b (R) | rho x<-a, y<-b (R) |
+| $`\rho_{S ( x ,\, y )} ( R )`$ | ρ S (ρ x←a, y←b (R)) | rho S (rho x<-a, y<-b (R)) |
+| $`R \times S`$ | R ⨯ S | R cross join S |
+| $`R \bowtie S`$ | R ⋈ S | R natural join S |
+| $`R \bowtie_{p} S`$ | R ⋈ p S | R join p S |
+| $`R \mathrel{⟕}_{p} S`$ | R ⟕ p S | R left join p S |
+| $`R \cup S`$, $`R \cap S`$ | R ∪ S, R ∩ S | R union S, R intersect S |
+| $`R \setminus S`$ | R - S | R - S |
+| $`{}_{a} 𝔉_{\text{count} ( b )} ( R )`$ | γ a; count(b)→n (R) | gamma a; count(b)->n (R) |
+| $`𝔉_{\text{max} ( p )} ( R )`$ | γ max(p)→m (R) | gamma max(p)->m (R) |
 | ∧, ∨, ¬, ≠, ≤, ≥ | ∧, ∨, ¬, ≠, ≤, ≥ | and, or, not, !=, <=, >= |
 
 
@@ -159,9 +157,7 @@ What is the highest price per night of any listing? Return one column, max_price
 
 Lecture notation:
 
-```
-ρ[M(max_price)](ℱ[max(price)](Listing))
-```
+$`\rho_{M ( \text{max\_price} )} ( 𝔉_{\text{max} ( \text{price} )} ( \text{Listing} ) )`$
 
 RelaX:
 
@@ -188,9 +184,7 @@ Which hosts have a listing in Utrecht that costs less than €100 per night? Ret
 
 Lecture notation:
 
-```
-π[hid, hname](Host ⋈ σ[city = 'UTR' ∧ price < 100](Listing))
-```
+$`\pi_{\text{hid} ,\, \text{hname}} ( \text{Host} \bowtie \sigma_{\text{city} = \verb|'UTR'| \,\wedge\, \text{price} < 100} ( \text{Listing} ) )`$
 
 RelaX:
 
@@ -217,9 +211,7 @@ Which guests have never made a booking? Return gid.
 
 Lecture notation:
 
-```
-π[gid](Guest) ∖ π[gid](Booking)
-```
+$`\pi_{\text{gid}} ( \text{Guest} ) \setminus \pi_{\text{gid}} ( \text{Booking} )`$
 
 RelaX:
 
@@ -250,9 +242,7 @@ Which guests booked at least one listing hosted by Ada? Return (gid, gname).
 
 Lecture notation:
 
-```
-π[gid, gname](Guest ⋈ Booking ⋈ Listing ⋈ σ[hname = 'Ada'](Host))
-```
+$`\pi_{\text{gid} ,\, \text{gname}} ( \text{Guest} \bowtie \text{Booking} \bowtie \text{Listing} \bowtie \sigma_{\text{hname} = \verb|'Ada'|} ( \text{Host} ) )`$
 
 RelaX:
 
@@ -264,9 +254,8 @@ The same with theta joins:
 
 Lecture notation:
 
-```
-π[Guest.gid, gname](Guest ⋈[Guest.gid = Booking.gid] (Booking ⋈[Booking.lid = Listing.lid] (Listing ⋈[Listing.hid = Host.hid] σ[hname = 'Ada'](Host))))
-```
+$`\pi_{\text{Guest.gid} ,\, \text{gname}} ( \text{Guest} \bowtie_{\text{Guest.gid} = \text{Booking.gid}} ( \text{Booking} \bowtie_{\text{Booking.lid} = \text{Listing.lid}}`$\
+$`\qquad ( \text{Listing} \bowtie_{\text{Listing.hid} = \text{Host.hid}} \sigma_{\text{hname} = \verb|'Ada'|} ( \text{Host} ) ) ) )`$
 
 RelaX:
 
@@ -292,10 +281,8 @@ Which hosts have at least one listing, but none of their listings has ever been 
 
 Lecture notation:
 
-```
-N = π[hid](Listing) ∖ π[hid](Listing ⋈ Booking)
-π[hid, hname](Host ⋈ N)
-```
+$`N = \pi_{\text{hid}} ( \text{Listing} ) \setminus \pi_{\text{hid}} ( \text{Listing} \bowtie \text{Booking} )`$\
+$`\pi_{\text{hid} ,\, \text{hname}} ( \text{Host} \bowtie N )`$
 
 RelaX:
 
@@ -331,10 +318,8 @@ For every guest with at least one booking, how many bookings did they make? Retu
 
 Lecture notation:
 
-```
-C = ρ[C(gid, n)]([gid] ℱ [count(bid)](Booking))
-π[gid, gname, n](Guest ⋈ C)
-```
+$`C = \rho_{C ( \text{gid} ,\, n )} ( {}_{\text{gid}} 𝔉_{\text{count} ( \text{bid} )} ( \text{Booking} ) )`$\
+$`\pi_{\text{gid} ,\, \text{gname} ,\, n} ( \text{Guest} \bowtie C )`$
 
 RelaX:
 
@@ -364,11 +349,9 @@ Which guests booked a listing in Amsterdam and also a listing in Utrecht? Return
 
 Lecture notation:
 
-```
-A = π[gid](Booking ⋈ σ[city = 'AMS'](Listing))
-U = π[gid](Booking ⋈ σ[city = 'UTR'](Listing))
-π[gid, gname](Guest ⋈ (A ∩ U))
-```
+$`A = \pi_{\text{gid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \verb|'AMS'|} ( \text{Listing} ) )`$\
+$`U = \pi_{\text{gid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \verb|'UTR'|} ( \text{Listing} ) )`$\
+$`\pi_{\text{gid} ,\, \text{gname}} ( \text{Guest} \bowtie ( A \cap U ) )`$
 
 RelaX:
 
@@ -399,10 +382,8 @@ Which listing is the cheapest in its city? Return (city, lid, price) for every c
 
 Lecture notation:
 
-```
-M = ρ[M(city, min_price)]([city] ℱ [min(price)](Listing))
-π[Listing.city, lid, price](Listing ⋈[Listing.city = M.city ∧ Listing.price = M.min_price] M)
-```
+$`M = \rho_{M ( \text{city} ,\, \text{min\_price} )} ( {}_{\text{city}} 𝔉_{\text{min} ( \text{price} )} ( \text{Listing} ) )`$\
+$`\pi_{\text{Listing.city} ,\, \text{lid} ,\, \text{price}} ( \text{Listing} \bowtie_{\text{Listing.city} = M\text{.city} \,\wedge\, \text{Listing.price} = M\text{.min\_price}} M )`$
 
 RelaX:
 
@@ -436,11 +417,9 @@ For every host, how many bookings were made for their listings? Hosts without an
 
 Lecture notation:
 
-```
-LB = ρ[LB](Listing ⋈ Booking)
-J = Host ⟕[Host.hid = LB.hid] LB
-ρ[HostCounts(hid, hname, n)]([Host.hid, hname] ℱ [count(bid)](J))
-```
+$`\text{LB} = \rho_{\text{LB}} ( \text{Listing} \bowtie \text{Booking} )`$\
+$`J = \text{Host} \mathrel{⟕}_{\text{Host.hid} = \text{LB.hid}} \text{LB}`$\
+$`\rho_{\text{HostCounts} ( \text{hid} ,\, \text{hname} ,\, n )} ( {}_{\text{Host.hid} ,\, \text{hname}} 𝔉_{\text{count} ( \text{bid} )} ( J ) )`$
 
 RelaX:
 
@@ -454,10 +433,8 @@ Also correct, with two left outer joins:
 
 Lecture notation:
 
-```
-J = (Host ⟕[Host.hid = Listing.hid] Listing) ⟕[Listing.lid = Booking.lid] Booking
-ρ[HostCounts(hid, hname, n)]([Host.hid, hname] ℱ [count(bid)](J))
-```
+$`J = ( \text{Host} \mathrel{⟕}_{\text{Host.hid} = \text{Listing.hid}} \text{Listing} ) \mathrel{⟕}_{\text{Listing.lid} = \text{Booking.lid}} \text{Booking}`$\
+$`\rho_{\text{HostCounts} ( \text{hid} ,\, \text{hname} ,\, n )} ( {}_{\text{Host.hid} ,\, \text{hname}} 𝔉_{\text{count} ( \text{bid} )} ( J ) )`$
 
 RelaX:
 
@@ -491,9 +468,7 @@ Which guests booked at least two different listings? Answer without grouping or 
 
 Lecture notation:
 
-```
-π[B1.gid](σ[B1.gid = B2.gid ∧ B1.lid ≠ B2.lid](ρ[B1](Booking) × ρ[B2](Booking)))
-```
+$`\pi_{\text{B1.gid}} ( \sigma_{\text{B1.gid} = \text{B2.gid} \,\wedge\, \text{B1.lid} \neq \text{B2.lid}} ( \rho_{\text{B1}} ( \text{Booking} ) \times \rho_{\text{B2}} ( \text{Booking} ) ) )`$
 
 RelaX:
 
@@ -526,10 +501,8 @@ Which pairs of different guests booked the same listing in Rotterdam? Return eac
 
 Lecture notation:
 
-```
-R = π[gid, lid](Booking ⋈ σ[city = 'RTM'](Listing))
-ρ[(gid1, gid2)](π[A.gid, B.gid](σ[A.lid = B.lid ∧ A.gid < B.gid](ρ[A](R) × ρ[B](R))))
-```
+$`R = \pi_{\text{gid} ,\, \text{lid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \verb|'RTM'|} ( \text{Listing} ) )`$\
+$`\rho_{( \text{gid1} ,\, \text{gid2} )} ( \pi_{A\text{.gid} ,\, B\text{.gid}} ( \sigma_{A\text{.lid} = B\text{.lid} \,\wedge\, A\text{.gid} < B\text{.gid}} ( \rho_{A} ( R ) \times \rho_{B} ( R ) ) ) )`$
 
 RelaX:
 
@@ -557,10 +530,8 @@ In which cities has every listing been booked at least once? Return city.
 
 Lecture notation:
 
-```
-U = π[lid](Listing) ∖ π[lid](Booking)
-π[city](Listing) ∖ π[city](Listing ⋈ U)
-```
+$`U = \pi_{\text{lid}} ( \text{Listing} ) \setminus \pi_{\text{lid}} ( \text{Booking} )`$\
+$`\pi_{\text{city}} ( \text{Listing} ) \setminus \pi_{\text{city}} ( \text{Listing} \bowtie U )`$
 
 RelaX:
 
@@ -588,12 +559,10 @@ Which guests booked every listing hosted by Ada? Return (gid, gname).
 
 Lecture notation:
 
-```
-A = π[lid](Listing ⋈ σ[hname = 'Ada'](Host))
-G = π[gid](Booking)
-Missing = (G × A) ∖ π[gid, lid](Booking)
-π[gid, gname](Guest ⋈ (G ∖ π[gid](Missing)))
-```
+$`A = \pi_{\text{lid}} ( \text{Listing} \bowtie \sigma_{\text{hname} = \verb|'Ada'|} ( \text{Host} ) )`$\
+$`G = \pi_{\text{gid}} ( \text{Booking} )`$\
+$`\text{Missing} = ( G \times A ) \setminus \pi_{\text{gid} ,\, \text{lid}} ( \text{Booking} )`$\
+$`\pi_{\text{gid} ,\, \text{gname}} ( \text{Guest} \bowtie ( G \setminus \pi_{\text{gid}} ( \text{Missing} ) ) )`$
 
 RelaX:
 
@@ -604,7 +573,7 @@ Missing = (G ⨯ A) - π gid, lid (Booking)
 π gid, gname (Guest ⋈ (G - π gid (Missing)))
 ```
 
-G can also be π[gid](Guest): a guest without any booking misses all of Ada's listings, so the result is the same.
+$`G`$ can also be $`\pi_{\text{gid}} ( \text{Guest} )`$: a guest without any booking misses all of Ada's listings, so the result is the same.
 
 </details>
 
@@ -625,11 +594,9 @@ Which host has the most bookings over all of their listings? If several hosts sh
 
 Lecture notation:
 
-```
-C = ρ[C(hid, n)]([hid] ℱ [count(bid)](Listing ⋈ Booking))
-M = ρ[M(m)](ℱ[max(n)](C))
-π[hid, hname, n](Host ⋈ (C ⋈[n = m] M))
-```
+$`C = \rho_{C ( \text{hid} ,\, n )} ( {}_{\text{hid}} 𝔉_{\text{count} ( \text{bid} )} ( \text{Listing} \bowtie \text{Booking} ) )`$\
+$`M = \rho_{M ( m )} ( 𝔉_{\text{max} ( n )} ( C ) )`$\
+$`\pi_{\text{hid} ,\, \text{hname} ,\, n} ( \text{Host} \bowtie ( C \bowtie_{n = m} M ) )`$
 
 RelaX:
 
@@ -647,9 +614,7 @@ M = ρ M (γ max(n)→m (C))
 
 Describe in one sentence what this expression returns, and give its result. Does the result contain every guest who never booked a listing in Amsterdam? If not, which guests are missing, and why?
 
-```
-π[gid](Booking) ∖ π[gid](Booking ⋈ σ[city = 'AMS'](Listing))
-```
+$`\pi_{\text{gid}} ( \text{Booking} ) \setminus \pi_{\text{gid}} ( \text{Booking} \bowtie \sigma_{\text{city} = \verb|'AMS'|} ( \text{Listing} ) )`$
 
 <details><summary>Expected result (1 tuple)</summary>
 
@@ -661,7 +626,7 @@ Describe in one sentence what this expression returns, and give its result. Does
 
 <details><summary>Solution</summary>
 
-The expression returns the gid of every guest who made at least one booking, but none in Amsterdam: G12. G10 and G11 are missing, although they never booked in Amsterdam either. They never made any booking, and the expression starts from π[gid](Booking), not from π[gid](Guest).
+The expression returns the gid of every guest who made at least one booking, but none in Amsterdam: G12. G10 and G11 are missing, although they never booked in Amsterdam either. They never made any booking, and the expression starts from $`\pi_{\text{gid}} ( \text{Booking} )`$, not from $`\pi_{\text{gid}} ( \text{Guest} )`$.
 
 RelaX:
 
@@ -696,9 +661,7 @@ HAVING COUNT(b.bid) >= 10;
 
 Lecture notation:
 
-```
-σ[n ≥ 10](ρ[CityCounts(city, n)]([city] ℱ [count(bid)](Listing ⋈ Booking)))
-```
+$`\sigma_{n \geq 10} ( \rho_{\text{CityCounts} ( \text{city} ,\, n )} ( {}_{\text{city}} 𝔉_{\text{count} ( \text{bid} )} ( \text{Listing} \bowtie \text{Booking} ) ) )`$
 
 RelaX:
 
@@ -706,7 +669,7 @@ RelaX:
 σ n ≥ 10 (ρ CityCounts (γ city; count(bid)→n (Listing ⋈ Booking)))
 ```
 
-HAVING becomes a selection above ℱ. A condition in WHERE would be a selection below it.
+HAVING becomes the selection $`\sigma_{n \geq 10}`$ above $`𝔉`$. A condition in WHERE would be a selection below it.
 
 </details>
 
@@ -714,9 +677,7 @@ HAVING becomes a selection above ℱ. A condition in WHERE would be a selection 
 
 A student answers the question "Which guests have never made a booking? Return their names." with the expression below. Which guest is missing from its result, and why? Write an expression that returns (gid, gname) of all guests without a booking.
 
-```
-π[gname](Guest) ∖ π[gname](Guest ⋈ Booking)
-```
+$`\pi_{\text{gname}} ( \text{Guest} ) \setminus \pi_{\text{gname}} ( \text{Guest} \bowtie \text{Booking} )`$
 
 <details><summary>Expected result (2 tuples)</summary>
 
@@ -735,9 +696,7 @@ G11 (Noor) is missing. The expression subtracts names, and G1, who has bookings,
 
 Lecture notation:
 
-```
-π[gid, gname](Guest ⋈ (π[gid](Guest) ∖ π[gid](Booking)))
-```
+$`\pi_{\text{gid} ,\, \text{gname}} ( \text{Guest} \bowtie ( \pi_{\text{gid}} ( \text{Guest} ) \setminus \pi_{\text{gid}} ( \text{Booking} ) ) )`$
 
 RelaX:
 
